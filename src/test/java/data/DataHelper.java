@@ -18,25 +18,6 @@ public class DataHelper {
     private DataHelper() {
     }
 
-    private static final RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri("http://localhost")
-            .setPort(9999)
-            .setAccept(ContentType.JSON)
-            .setContentType(ContentType.JSON)
-            .log(LogDetail.ALL)
-            .build();
-
-
-    static void sendRequest(RegisteredUser user) {
-        given()
-                .spec(requestSpec)
-                .body(user)
-                .when()
-                .post("/api/system/users")
-                .then()
-                .statusCode(200);
-    }
-
     public static RegisteredUser getRegisteredUser() {
         return new RegisteredUser("vasya", "qwerty123");
     }
